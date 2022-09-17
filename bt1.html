@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bt1</title>
+</head>
+
+<body>
+    <div id="users">
+        <input placeholder="search..." id="myInput" ><br>
+    </div>
+
+    <script>
+        const baseURL = 'https://jsonplaceholder.typicode.com/posts'
+        fetch(`${baseURL}`, {
+            method: 'GET',
+        })
+            .then(data => data.json())
+            .then(res => {
+                // console.log(res);
+                for (const index in res) {
+                    // console.log(res[index].title);
+                    res.filter(item=>item.title)
+                    document.getElementById('users').innerHTML += `
+                        <ul>
+                            <li>userId: ${res[index].userId}</li><br> 
+                            <li>id: ${res[index].id}</li><br> 
+                            <li>title: ${res[index].title}</li><br> 
+                            <li>body: ${res[index].body}</li><br><br> 
+                        </ul>
+                        
+                    `
+                }
+            })
+
+        var input = document.getElementById('myInput').value;
+             
+    </script>
+</body>
+
+</html>
